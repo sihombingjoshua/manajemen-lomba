@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Login</h2>
-    
+    <h2>Registrasi Akun Baru</h2>
+
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
@@ -13,7 +13,7 @@
         {% endif %}
     {% endwith %}
 
-    <form method="POST" action="{{ url_for('login') }}">
+    <form method="POST" action="{{ url_for('register') }}">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
@@ -22,9 +22,9 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Registrasi</button>
     </form>
     <p style="margin-top: 15px;">
-        Belum punya akun? <a href="{{ url_for('register') }}">Registrasi di sini</a>
+        Sudah punya akun? <a href="{{ url_for('login') }}">Login di sini</a>
     </p>
 {% endblock %}
