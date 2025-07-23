@@ -108,22 +108,40 @@ def logout():
 # --- ROUTE LAMA YANG SEKARANG DILINDUNGI ---
 
 @app.route('/new', methods=['GET', 'POST'])
-@login_required # Melindungi halaman tambah data
+@login_required
 def new_competition():
-    # Logika tidak berubah, hanya ditambahkan decorator @login_required
     if request.method == 'POST':
+        # Mengambil data dari form
+        name = request.form.get('name')
+        organizer = request.form.get('organizer')
+        deadline_str = request.form.get('deadline')
+        guidebook_link = request.form.get('guidebook_link')
+        information_link = request.form.get('information_link')
+
+        # --- BLOK VALIDASI SISI SERVER ---
+        if not name or not organizer or not deadline_str:
+            flash('Nama, Penyelenggara, dan Deadline wajib diisi.', 'danger')
+            # Kembali ke form jika ada data yang tidak valid
+            return redirect(url_for('new_competition'))
+        # --------------------------------
+
+        # Jika validasi lolos, lanjutkan proses
+        deadline = datetime.strptime(deadline_str, '%Y-%m-%d').date()
+
         new_comp = Competition(
-            name=request.form['name'],
-            organizer=request.form['organizer'],
-            registration_deadline=datetime.strptime(request.form['deadline'], '%Y-%m-%d').date(),
-            guidebook_link=request.form['guidebook_link'],
-            information_link=request.form['information_link']
+            name=name,
+            organizer=organizer,
+            registration_deadline=deadline,
+            guidebook_link=guidebook_link,
+            information_link=information_link
         )
         db.session.add(new_comp)
         db.session.commit()
+        flash('Kompetisi berhasil ditambahkan!', 'success')
         return redirect(url_for('index'))
-    return render_template('new.html')
 
+    return render_template('new.html')
+    
 @app.route('/update_status/<int:id>', methods=['POST'])
 @login_required # Melindungi fungsi update
 def update_status(id):
