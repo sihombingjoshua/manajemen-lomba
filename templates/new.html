@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Formulir Submission Kompetisi Baru</h2>
+    <form action="{{ url_for('new_competition') }}" method="POST">
+        <div class="form-group">
+            <label for="name">Nama Kompetisi</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="organizer">Penyelenggara</label>
+            <input type="text" id="organizer" name="organizer" required>
+        </div>
+        <div class="form-group">
+            <label for="deadline">Deadline Registrasi</label>
+            <input type="date" id="deadline" name="deadline" required>
+        </div>
+        <div class="form-group">
+            <label for="guidebook_link">Link Guidebook</label>
+            <input type="url" id="guidebook_link" name="guidebook_link">
+        </div>
+        <div class="form-group">
+            <label for="information_link">Link Informasi Tambahan</label>
+            <input type="url" id="information_link" name="information_link">
+        </div>
+        <button type="submit">Submit Kompetisi</button>
+    </form>
+{% endblock %}

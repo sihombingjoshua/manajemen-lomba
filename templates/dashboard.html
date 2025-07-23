@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Dashboard</h3>
+    {% if session.role == 'submitter' %}
+    <a href="{{ url_for('submit_competition') }}" class="btn btn-primary">Submit Kompetisi Baru</a>
+    {% endif %}
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nama Kompetisi</th>
+            <th>Penyelenggara</th>
+            <th>Deadline</th>
+            <th>Status</th>
+            {% if session.role == 'processor' %}<th>Disubmit oleh</th>{% endif %}
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for comp in competitions %}
+        <tr>
+            <td>{{ comp.nama_kompetisi }}</td>
+            <td>{{ comp.penyelenggara }}</td>
+            <td>{{ comp.deadline_reg.strftime('%d %B %Y') }}</td>
+            <td><span class="badge badge-info">{{ comp.status }}</span></td>
+            {% if session.role == 'processor' %}<td>{{ comp.submitter_name }}</td>{% endif %}
+            <td>
+                {% if session.role == 'processor' %}
+                <form action="{{ url_for('update_status', id=comp.id) }}" method="post" class="form-inline">
+                    <select name="status" class="form-control form-control-sm mr-2">
+                        <option value="In Review" {% if comp.status == 'In Review' %}selected{% endif %}>In Review</option>
+                        <option value="Approved" {% if comp.status == 'Approved' %}selected{% endif %}>Approved</option>
+                        <option value="Rejected" {% if comp.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+                        <option value="Needs Info" {% if comp.status == 'Needs Info' %}selected{% endif %}>Needs Info</option>
+                    </select>
+                    <button type="submit" class="btn btn-sm btn-success">Update</button>
+                </form>
+                {% else %}
+                <a href="#" class="btn btn-sm btn-secondary">Lihat Detail</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6" class="text-center">Belum ada data kompetisi.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

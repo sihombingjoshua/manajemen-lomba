@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Daftar Submission Kompetisi</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Kompetisi</th>
+                <th>Penyelenggara</th>
+                <th>Deadline Registrasi</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for competition in competitions %}
+            <tr>
+                <td>
+                    {{ competition.name }}
+                    <br>
+                    <small>
+                        <a href="{{ competition.guidebook_link }}" target="_blank">Guidebook</a> |
+                        <a href="{{ competition.information_link }}" target="_blank">Info</a>
+                    </small>
+                </td>
+                <td>{{ competition.organizer }}</td>
+                <td>{{ competition.registration_deadline.strftime('%d %B %Y') }}</td>
+                <td>
+                    <form action="{{ url_for('update_status', id=competition.id) }}" method="POST" style="display: flex; gap: 5px;">
+                        <select name="status">
+                            <option value="Submitted" {% if competition.status == 'Submitted' %}selected{% endif %}>Submitted</option>
+                            <option value="In Review" {% if competition.status == 'In Review' %}selected{% endif %}>In Review</option>
+                            <option value="Approved" {% if competition.status == 'Approved' %}selected{% endif %}>Approved ✅</option>
+                            <option value="Rejected" {% if competition.status == 'Rejected' %}selected{% endif %}>Rejected ❌</option>
+                            <option value="Needs Info" {% if competition.status == 'Needs Info' %}selected{% endif %}>Needs Info ⚠️</option>
+                        </select>
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+                <td>
+                     <form action="{{ url_for('delete_competition', id=competition.id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus kompetisi ini?');">
+                        <button type="submit" class="delete-button">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5">Belum ada kompetisi yang disubmit.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
