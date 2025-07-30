@@ -41,8 +41,8 @@ Berikut adalah langkah-langkah untuk menyiapkan dan menjalankan aplikasi ini di 
     Buka terminal dan jalankan perintah berikut:
 
     ```bash
-    git clone [URL_REPOSITORI_ANDA]
-    cd [NAMA_FOLDER_PROYEK]
+    git clone https://github.com/sihombingjoshua/manajemen-lomba.git
+    cd manajemen-lomba
     ```
 
 2.  **Buat Virtual Environment** (Sangat disarankan)
@@ -59,11 +59,10 @@ Berikut adalah langkah-langkah untuk menyiapkan dan menjalankan aplikasi ini di 
     pip install -r requirements.txt
     ```
 
-    *(Catatan: Jika file `requirements.txt` belum ada, buat dengan perintah `pip freeze > requirements.txt` setelah menginstal `Flask`, `Flask-SQLAlchemy`, dan `Flask-Login`)*
 
 ### 3\. Konfigurasi HTTPS
 
-Aplikasi ini wajib berjalan di atas HTTPS. Lakukan langkah-langkah di bagian **Konfigurasi HTTPS** di bawah untuk membuat file sertifikat.
+Aplikasi ini wajib berjalan di atas HTTPS. Lakukan langkah-langkah di bagian **Konfigurasi HTTPS** di bawah untuk membuat file sertifikat anda sendiri.
 
 ### 4\. Jalankan Aplikasi
 
@@ -82,7 +81,7 @@ Aplikasi sekarang akan berjalan dan dapat diakses melalui **`https://127.0.0.1:5
 Untuk mengaktifkan HTTPS di `localhost`, kita menggunakan sertifikat yang ditandatangani sendiri (*self-signed certificate*) yang dibuat dengan **OpenSSL**.
 
 1.  **Buat Sertifikat**
-    Pastikan Anda berada di direktori utama proyek, lalu jalankan perintah berikut di terminal:
+    Masuk ke dalam folder cert/, jika tidak ada anda dapat membuatnya, lalu jalankan perintah berikut di terminal:
 
     ```bash
     openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365
@@ -96,7 +95,7 @@ Untuk mengaktifkan HTTPS di `localhost`, kita menggunakan sertifikat yang ditand
     ```python
     if __name__ == '__main__':
         # ... (kode lain) ...
-        app.run(debug=True, ssl_context=('cert.pem', 'key.pem'))
+        app.run(debug=True, ssl_context=('cert/cert.pem', 'cert/key.pem'))
     ```
 
 ⚠️ **Peringatan Browser**
@@ -141,7 +140,7 @@ Untuk mendapatkan **nilai plus**, mekanisme sesi ditangani dengan aman.
 
 ## 👨‍💻 Anggota Kelompok
 
-1.  [Nama Anggota 1] - [NIM]
-2.  [Nama Anggota 2] - [NIM]
-3.  [Nama Anggota 3] - [NIM]
-4.  [Nama Anggota 4] - [NIM]
+1.  Joshua Pratama Sihombing - 2322101929
+2.  Hafizhah Luthfi Abdillah - 2322101914
+3.  Fairus Febrian Rahardiyana Putra - 2322101902
+4.  Anggel Marya Savrila - 2232101879
