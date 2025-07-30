@@ -164,4 +164,4 @@ if __name__ == '__main__':
     with app.app_context():
         # Sekarang create_all() akan membuat tabel User dan Competition
         db.create_all()
-    app.run(debug=True)
+    app.run(host="0.0.0.0",debug=True,ssl_context=('cert/cert.pem', 'cert/key.pem'))
