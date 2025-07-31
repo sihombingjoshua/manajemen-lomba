@@ -66,6 +66,10 @@ Untuk keluar dari sesi Anda secara aman:
 2.  Klik tombol **"Logout"** yang ada di sebelahnya.
 3.  Anda akan diarahkan kembali ke halaman login.
 
+---
+
+# Bahasan Teknis
+
 ## 🛠️ Teknologi yang Digunakan
 
   * **Backend:** Python 3
