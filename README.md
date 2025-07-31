@@ -1,10 +1,70 @@
-to do:
-- user submitter pada attribut submission
-- sanitasi dan validasi input 
-
 # Aplikasi Manajemen Submisi Lomba
 
 Aplikasi web sederhana ini dikembangkan sebagai bagian dari tugas proyek untuk mengelola data submisi kompetisi. Fokus utama dari proyek ini adalah implementasi fitur-fitur keamanan dasar dalam lingkungan pengembangan lokal yang berjalan di atas protokol HTTPS.
+
+---
+
+# 📖 Panduan Penggunaan Aplikasi Manajemen Lomba
+
+Selamat datang di Aplikasi Manajemen Submisi Lomba! Dokumen ini akan memandu Anda dalam menggunakan fitur-fitur utama aplikasi.
+
+## 🔑 Memulai
+
+Sebelum dapat mengelola data, Anda harus memiliki akun dan masuk ke dalam sistem.
+
+### 1. Registrasi Akun Baru
+Jika Anda belum memiliki akun, Anda harus mendaftar terlebih dahulu.
+1.  Pada halaman utama, klik tombol **"Registrasi"** di pojok kanan atas.
+2.  Isi kolom **Username** dan **Password** yang Anda inginkan.
+3.  Klik tombol **"Registrasi"** untuk membuat akun Anda.
+4.  Anda akan diarahkan ke halaman login.
+
+### 2. Login ke Aplikasi
+Setelah memiliki akun, Anda bisa masuk ke sistem.
+1.  Buka halaman login.
+2.  Masukkan **Username** dan **Password** yang telah Anda daftarkan.
+3.  Klik tombol **"Login"**.
+4.  Jika berhasil, Anda akan dibawa ke halaman Dashboard utama. Jika gagal, sebuah pesan kesalahan akan muncul.
+
+---
+
+## 🚀 Mengelola Data Kompetisi
+
+Setelah berhasil login, Anda dapat mengelola semua data submisi kompetisi dari halaman Dashboard.
+
+### Menambah Kompetisi Baru
+Untuk memasukkan data kompetisi baru ke dalam sistem:
+1.  Di halaman Dashboard, klik tombol **"Tambah Kompetisi Baru"** di bagian atas.
+2.  Anda akan diarahkan ke sebuah formulir. Isi semua kolom yang diperlukan:
+    * Nama Kompetisi
+    * Penyelenggara
+    * Deadline Registrasi
+    * Link Guidebook (opsional)
+    * Link Informasi (opsional)
+3.  Klik tombol **"Submit Kompetisi"** untuk menyimpan data. Data baru akan langsung muncul di tabel Dashboard.
+
+### Melihat dan Membaca Data
+Semua data kompetisi yang telah disubmit ditampilkan dalam bentuk tabel di halaman Dashboard. Anda dapat menggulir ke bawah untuk melihat semua entri. Untuk mencari data spesifik, Anda bisa menggunakan fitur pencarian bawaan browser (`Ctrl+F` atau `Cmd+F`).
+
+### Mengubah Status Kompetisi
+Anda dapat mengubah status setiap submisi untuk melacak progresnya (misalnya dari `Submitted` menjadi `Approved`).
+1.  Cari baris data kompetisi yang ingin Anda ubah statusnya.
+2.  Pada kolom **"Status"**, klik menu *dropdown* dan pilih status yang baru (contoh: "In Review", "Approved", "Rejected").
+3.  Klik tombol **"Update"** yang ada di sebelahnya untuk menyimpan perubahan. Halaman akan otomatis me-refresh dengan status terbaru.
+
+### Menghapus Kompetisi
+Jika sebuah data kompetisi tidak lagi relevan atau salah diinput, Anda bisa menghapusnya.
+1.  Cari baris data yang ingin Anda hapus.
+2.  Pada kolom **"Aksi"**, klik tombol **"Hapus"** yang berwarna merah.
+3.  Sebuah pesan konfirmasi akan muncul di browser. Klik **"OK"** untuk menghapus data secara permanen.
+
+---
+
+## 🚪 Logout
+Untuk keluar dari sesi Anda secara aman:
+1.  Cari nama pengguna Anda di pojok kanan atas halaman.
+2.  Klik tombol **"Logout"** yang ada di sebelahnya.
+3.  Anda akan diarahkan kembali ke halaman login.
 
 ## 🛠️ Teknologi yang Digunakan
 
@@ -144,3 +204,11 @@ Untuk mendapatkan **nilai plus**, mekanisme sesi ditangani dengan aman.
 2.  Hafizhah Luthfi Abdillah - 2322101914
 3.  Fairus Febrian Rahardiyana Putra - 2322101902
 4.  Anggel Marya Savrila - 2232101879
+
+-----
+
+developer note
+
+to do:
+- user submitter pada attribut submission
+- sanitasi dan validasi input 
